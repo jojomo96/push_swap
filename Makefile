@@ -18,20 +18,28 @@ SRC_DIR := src
 OBJ_DIR := lib/obj
 
 # Sources
-SRCS := main.c
+SRCS := main.c \
+		parsing/parser.c \
+		stacks/ft_global_stacks.c \
+		utils/ft_error_handler.c
 # Object Files
 OBJS := $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
 # Compilation Rule
-all: libft $(NAME)
+all: directories libft $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^ $(LIBFT_FLAGS)
 
 # Rule for making object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -I$(LIBFT_INC) -c $< -o $@
+
+# Create necessary directories
+directories:
+	@mkdir -p $(OBJ_DIR)/parsing
+	@mkdir -p $(OBJ_DIR)/stacks
+	@mkdir -p $(OBJ_DIR)/utils
 
 # Rule for making the library
 libft:
@@ -48,5 +56,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re libft
-
+.PHONY: all clean fclean re libft directories

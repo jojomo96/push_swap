@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push_swap.h                                     :+:      :+:    :+:   */
+/*   ft_isnumber.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/10 00:55:15 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/11 16:07:42 by jmoritz          ###   ########.fr       */
+/*   Created: 2024/04/11 15:52:08 by jmoritz           #+#    #+#             */
+/*   Updated: 2024/04/11 17:01:51 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PUSH_SWAP_H
-# define FT_PUSH_SWAP_H
+#include "libft.h"
 
-# include "../lib/lib.h"
-# include <limits.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+int	ft_isnumber(char *str)
+{
+	int	i;
 
-t_dlist	*ft_global_stack_a(void);
-t_dlist	*ft_global_stack_b(void);
-void	ft_global_stacks_destroy(void);
-
-void	ft_parse_input(t_dlist *list, char **argv);
-void	ft_error(char *message);
-
-#endif
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}

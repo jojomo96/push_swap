@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push_swap.h                                     :+:      :+:    :+:   */
+/*   ft_dlist_append_unique.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/10 00:55:15 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/11 16:07:42 by jmoritz          ###   ########.fr       */
+/*   Created: 2024/04/11 15:59:59 by jmoritz           #+#    #+#             */
+/*   Updated: 2024/04/11 17:34:32 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PUSH_SWAP_H
-# define FT_PUSH_SWAP_H
+#include "ft_dlist.h"
+#include <stdio.h>
 
-# include "../lib/lib.h"
-# include <limits.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+bool	ft_dlist_append_unique(t_dlist *lst, t_dlist_node *new,
+		int (*cmp)(void *, void *))
+{
+	t_dlist_node	*current;
 
-t_dlist	*ft_global_stack_a(void);
-t_dlist	*ft_global_stack_b(void);
-void	ft_global_stacks_destroy(void);
-
-void	ft_parse_input(t_dlist *list, char **argv);
-void	ft_error(char *message);
-
-#endif
+	if (!lst || !new)
+		return (false);
+	current = lst->head;
+	while (current)
+	{
+		if (cmp(current->content, new->content) == 0)
+			return (false);
+		current = current->next;
+	}
+	ft_dlist_append(lst, new);
+	return (true);
+}

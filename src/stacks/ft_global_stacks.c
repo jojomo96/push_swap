@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 14:35:52 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/11 14:36:40 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/11 17:41:39 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ void	ft_global_stacks_destroy(void)
 
 	stack_a = ft_global_stack_a();
 	stack_b = ft_global_stack_b();
-	ft_dlist_destroy(&stack_a, NULL);
-	ft_dlist_destroy(&stack_b, NULL);
+	ft_dlist_destroy(&stack_a, free);
+	ft_dlist_destroy(&stack_b, free);
 }

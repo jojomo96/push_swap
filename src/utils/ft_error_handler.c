@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push_swap.h                                     :+:      :+:    :+:   */
+/*   ft_error_handler.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/10 00:55:15 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/11 16:07:42 by jmoritz          ###   ########.fr       */
+/*   Created: 2024/04/11 15:57:51 by jmoritz           #+#    #+#             */
+/*   Updated: 2024/04/11 16:56:18 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PUSH_SWAP_H
-# define FT_PUSH_SWAP_H
+#include "../ft_push_swap.h"
 
-# include "../lib/lib.h"
-# include <limits.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+void	ft_error(char *message)
+{
+	t_dlist	*stack_a;
+	t_dlist	*stack_b;
 
-t_dlist	*ft_global_stack_a(void);
-t_dlist	*ft_global_stack_b(void);
-void	ft_global_stacks_destroy(void);
-
-void	ft_parse_input(t_dlist *list, char **argv);
-void	ft_error(char *message);
-
-#endif
+	stack_a = ft_global_stack_a();
+	stack_b = ft_global_stack_b();
+	ft_dlist_destroy(&stack_a, free);
+	ft_dlist_destroy(&stack_b, free);
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(message, 2);
+	ft_putchar_fd('\n', 2);
+	exit(EXIT_FAILURE);
+}

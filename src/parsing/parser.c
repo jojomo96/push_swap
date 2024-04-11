@@ -6,19 +6,71 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 17:18:54 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/10 17:19:56 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/11 17:46:31 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../ft_push_swap.h"
 
-
-
-
-
-
-
-
-int main (int argc, char *argv[])
+static void	ft_free_split(char **split)
 {
-	return (0);
+	int	i;
+
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
+}
+
+static void	ft_handle_error(char *message, char **split)
+{
+	ft_free_split(split);
+	ft_error(message);
+}
+
+static int	ft_compare_int(void *a, void *b)
+{
+	return (*(int *)a - *(int *)b);
+}
+
+void	ft_parse_input(t_dlist *list, char **argv)
+{
+	int				i;
+	int				j;
+	char			**split;
+	int				*value;
+	t_dlist_node	*node;
+
+	i = 1;
+	while (argv[i])
+	{
+		split = ft_split(argv[i], ' ');
+		if (!split)
+			ft_error("Memory allocation failed for split");
+		if (!split[0])
+			ft_handle_error("Empty string", split);
+		j = 0;
+		while (split[j])
+		{
+			if (!ft_isnumber(split[j]))
+				ft_handle_error("Invalid number format", split);
+			value = malloc(sizeof(int));
+			if (!value)
+				ft_handle_error("Memory allocation failed for integer", split);
+			*value = ft_atoi(split[j]);
+			node = ft_dlist_new_node(value);
+			if (!ft_dlist_append_unique(list, node, ft_compare_int))
+			{
+				free(value);
+				free(node);
+				ft_handle_error("Duplicate value or append failed", split);
+			}
+			j++;
+		}
+		ft_free_split(split);
+		i++;
+	}
 }

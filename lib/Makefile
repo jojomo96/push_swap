@@ -55,6 +55,7 @@ SRCS := ft_libft/ft_atoi.c \
 		ft_libft/ft_strcmp.c \
 		ft_libft/ft_is_str_digit.c \
 		ft_libft/ft_realloc.c \
+		ft_libft/ft_isnumber.c \
 		ft_printf/ft_printf.c \
 		ft_printf/ft_bools.c \
 		ft_printf/ft_handle_char.c \
@@ -73,7 +74,8 @@ SRCS := ft_libft/ft_atoi.c \
 		ft_dlist/ft_dlist_find.c \
 		ft_dlist/ft_dlist_rotate.c \
 		ft_dlist/ft_dlist_utils.c \
-		ft_dlist/ft_dlist.c
+		ft_dlist/ft_dlist.c \
+		ft_dlist/ft_dlist_append_unique.c \
 
 
 
