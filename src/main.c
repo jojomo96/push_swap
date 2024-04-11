@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 12:36:42 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/11 13:37:16 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/11 14:30:11 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int main(int argc, char const *argv[])
 {
-	(void)argc;
-	(void)argv;
-	printf("Hello World\n");
-	return 0;
+	t_dlist	*stack_a;
+	t_dlist	*stack_b;
 }
