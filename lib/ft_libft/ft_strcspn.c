@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push_swap.h                                     :+:      :+:    :+:   */
+/*   ft_strcspn.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/10 00:55:15 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/10 13:42:53 by jmoritz          ###   ########.fr       */
+/*   Created: 2024/04/07 15:06:52 by jmoritz           #+#    #+#             */
+/*   Updated: 2024/04/07 15:07:12 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#if !defined(FT_PUSH_SWAP_H)
-#define FT_PUSH_SWAP_H
+#include "libft.h"
 
-#ifndef UNISTD_H
-# include <unistd.h>
-#endif
-
-#include <stdlib.h>
-#include <stdio.h>
-#include <limits.h>
-
-typedef struct s_list
+size_t	ft_strcspn(const char *s, const char *reject)
 {
-	void			*content;
-	struct s_list	*next;
-	struct s_list	*prev;
-}	t_list;
+	size_t	i;
 
-#endif
+	i = 0;
+	while (s[i] != '\0' && !ft_strchr(reject, s[i]))
+		i++;
+	return (i);
+}
