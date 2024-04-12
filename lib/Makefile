@@ -76,6 +76,7 @@ SRCS := ft_libft/ft_atoi.c \
 		ft_dlist/ft_dlist_utils.c \
 		ft_dlist/ft_dlist.c \
 		ft_dlist/ft_dlist_append_unique.c \
+		ft_dlist/ft_dlist_sort.c \
 
 
 

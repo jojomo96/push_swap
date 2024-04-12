@@ -25,5 +25,5 @@ void	ft_global_stacks_destroy(void);
 
 void	ft_parse_input(t_dlist *list, char **argv);
 void	ft_error(char *message);
-
+int	ft_int_cmp(void *a, void *b);
 #endif

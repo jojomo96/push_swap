@@ -21,7 +21,8 @@ OBJ_DIR := lib/obj
 SRCS := main.c \
 		parsing/parser.c \
 		stacks/ft_global_stacks.c \
-		utils/ft_error_handler.c
+		utils/ft_error_handler.c \
+		utils/ft_compare.c
 # Object Files
 OBJS := $(SRCS:%.c=$(OBJ_DIR)/%.o)
 

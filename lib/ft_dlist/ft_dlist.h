@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:40:27 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/11 17:34:41 by jmoritz          ###   ########.fr       */
+/*   Updated: 12/04/2024 01:34:22 PM jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,7 @@ size_t					ft_dlist_size(t_dlist *lst);
 void					ft_dlist_print(t_dlist *lst, void (*print)(void *));
 bool					ft_dlist_append_unique(t_dlist *lst, t_dlist_node *new,
 							int (*cmp)(void *, void *));
+
+void					ft_dlist_sort(t_dlist *lst, int (*cmp)(void *, void *));
 
 #endif
