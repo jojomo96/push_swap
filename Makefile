@@ -21,6 +21,7 @@ OBJ_DIR := lib/obj
 SRCS := main.c \
 		parsing/parser.c \
 		stacks/ft_global_stacks.c \
+		stacks/operations/ft_swap.c \
 		utils/ft_error_handler.c \
 		utils/ft_compare.c
 # Object Files
@@ -40,6 +41,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 directories:
 	@mkdir -p $(OBJ_DIR)/parsing
 	@mkdir -p $(OBJ_DIR)/stacks
+	@mkdir -p $(OBJ_DIR)/stacks/operations
 	@mkdir -p $(OBJ_DIR)/utils
 
 # Rule for making the library

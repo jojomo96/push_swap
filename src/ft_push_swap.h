@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 00:55:15 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/11 16:07:42 by jmoritz          ###   ########.fr       */
+/*   Updated: 12/04/2024 04:53:58 PM jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,9 @@ void	ft_global_stacks_destroy(void);
 
 void	ft_parse_input(t_dlist *list, char **argv);
 void	ft_error(char *message);
-int	ft_int_cmp(void *a, void *b);
+int		ft_int_cmp(void *a, void *b);
+
+// operations
+void	ft_swap_a();
+void	ft_swap_b();
 #endif

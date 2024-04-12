@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:48:51 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/10 15:54:28 by jmoritz          ###   ########.fr       */
+/*   Updated: 12/04/2024 05:00:18 PM jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,9 @@ void	ft_dlist_node_destroy(t_dlist_node **node, void (*del)(void *))
 void	ft_dlist_print(t_dlist *lst, void (*print)(void *))
 {
 	t_dlist_node	*tmp;
+  int content;
 
+  content = (int)'\n';
 	if (!lst || !print)
 		return ;
 	tmp = lst->head;
@@ -55,4 +57,5 @@ void	ft_dlist_print(t_dlist *lst, void (*print)(void *))
 		print(tmp->content);
 		tmp = tmp->next;
 	}
+  print(&content);
 }
