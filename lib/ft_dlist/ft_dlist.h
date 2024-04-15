@@ -55,7 +55,7 @@ t_dlist_node			*ft_dlist_find(t_dlist *lst, void *content,
 
 size_t					ft_dlist_size(t_dlist *lst);
 
-void					ft_dlist_print(t_dlist *lst, void (*print)(void *));
+void					ft_dlist_print(t_dlist *lst, void (*print)(t_dlist_node*));
 bool					ft_dlist_append_unique(t_dlist *lst, t_dlist_node *new,
 							int (*cmp)(void *, void *));
 

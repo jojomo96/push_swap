@@ -43,19 +43,16 @@ void	ft_dlist_node_destroy(t_dlist_node **node, void (*del)(void *))
 	*node = NULL;
 }
 
-void	ft_dlist_print(t_dlist *lst, void (*print)(void *))
+void	ft_dlist_print(t_dlist *lst, void (*print)(t_dlist_node*))
 {
 	t_dlist_node	*tmp;
-  int content;
-
-  content = (int)'\n';
+  
 	if (!lst || !print)
 		return ;
 	tmp = lst->head;
 	while (tmp)
 	{
-		print(tmp->content);
+		print(tmp);
 		tmp = tmp->next;
 	}
-  print(&content);
 }

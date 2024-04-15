@@ -35,6 +35,7 @@ void	ft_dlist_append(t_dlist *lst, t_dlist_node *new)
 	{
 		lst->head = new;
 		lst->tail = new;
+    lst->size++;
 		return ;
 	}
 	lst->tail->next = new;

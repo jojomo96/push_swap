@@ -28,6 +28,16 @@ void	ft_error(char *message);
 int		ft_int_cmp(void *a, void *b);
 
 // operations
-void	ft_swap_a();
-void	ft_swap_b();
+void	ft_swap_a(void);
+void	ft_swap_b(void);
+void	ft_swap_s(void);
+void	ft_push_a(void);
+void	ft_push_b(void);
+void	ft_rotate_r(void);
+void	ft_rotate_a(void);
+void	ft_rotate_b(void);
+void	ft_reverse_rotate_a(void);
+void	ft_reverse_rotate_b(void);
+void	ft_reverse_rotate_r(void);
+
 #endif

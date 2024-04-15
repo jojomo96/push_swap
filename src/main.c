@@ -12,11 +12,11 @@
 
 #include "ft_push_swap.h"
 
-void	ft_print_int(void *data)
+void	ft_print_int(t_dlist_node *node)
 {
-  if(*(char *)data == '\n')
-    ft_printf("\n");
-	ft_printf("%d ", *(int *)data);
+	ft_printf("%d (prev: %d, next: %d)", *(int *)node->content,
+		node->prev ? *(int *)node->prev->content : 0,
+		node->next ? *(int *)node->next->content : 0);
 }
 
 int	main(int argc, char const *argv[])
@@ -25,13 +25,10 @@ int	main(int argc, char const *argv[])
 		ft_error("To few arguments. Please provide a list of integer.");
 	ft_parse_input(ft_global_stack_a(), (char **)argv);
 	ft_dlist_print(ft_global_stack_a(), ft_print_int);
-  ft_printf("\n");
-	ft_dlist_sort(ft_global_stack_a(), ft_int_cmp);
+	ft_printf("\n");
+  ft_rotate_a();
 	ft_dlist_print(ft_global_stack_a(), ft_print_int);
-  ft_printf("\n");
-  ft_swap_a();
-  ft_dlist_print(ft_global_stack_a(), ft_print_int);
-  ft_printf("\n");
+	ft_printf("\n");
 	ft_global_stacks_destroy();
 	return (0);
 }

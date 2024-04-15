@@ -22,6 +22,9 @@ SRCS := main.c \
 		parsing/parser.c \
 		stacks/ft_global_stacks.c \
 		stacks/operations/ft_swap.c \
+		stacks/operations/ft_push.c \
+		stacks/operations/ft_rotate.c \
+		stacks/operations/ft_reverse_rotate.c \
 		utils/ft_error_handler.c \
 		utils/ft_compare.c
 # Object Files
