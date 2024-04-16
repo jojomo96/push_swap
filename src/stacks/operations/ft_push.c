@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 09:06:01 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/16 09:07:08 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/16 09:32:28 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,9 @@ void	ft_push(t_dlist *src, t_dlist *dst)
 
 	if (!src || !dst || ft_dlist_size(src) == 0)
 		return ;
-	node = src->head;
-	src->head = node->next;
-	if (src->head)
-		src->head->prev = NULL;
-	if (!dst->head)
-	{
-		dst->head = node;
-		dst->tail = node;
-		node->prev = NULL;
-		node->next = NULL;
-	}
-	else
-	{
-		node->next = dst->head;
-		dst->head->prev = node;
-		dst->head = node;
-	}
+	node = ft_dlist_pop_front(src);
+	if (node)
+		ft_dlist_prepend(dst, node);
 }
 
 void	ft_push_a(void)
