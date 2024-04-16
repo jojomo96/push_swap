@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 14:18:19 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/10 14:22:59 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/16 09:38:33 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ t_dlist_node	*ft_dlist_pop_front(t_dlist *lst)
 	lst->head = first->next;
 	if (lst->head)
 		lst->head->prev = NULL;
+	else
+		lst->tail = NULL;
 	first->next = NULL;
 	first->prev = NULL;
 	lst->size--;
@@ -69,6 +71,8 @@ t_dlist_node	*ft_dlist_pop_back(t_dlist *lst)
 	last = lst->tail;
 	if (last->prev)
 		last->prev->next = NULL;
+	else
+		lst->head = NULL;
 	lst->tail = last->prev;
 	last->next = NULL;
 	last->prev = NULL;
