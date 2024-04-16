@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 12:36:42 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/16 09:11:58 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/16 09:13:22 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_print_int(t_dlist_node *node)
 int	main(int argc, char const *argv[])
 {
 	if (argc < 2)
-		ft_error("To few arguments. Please provide a list of integer.");
+		return (0);
 	ft_parse_input(ft_global_stack_a(), (char **)argv);
 	ft_dlist_print(ft_global_stack_a(), ft_print_int);
 	ft_printf("\n");
