@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:46:44 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/03/12 20:14:40 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/16 09:54:31 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ int	ft_handle_int_number(long n, t_params params, t_dca *str)
 	{
 		return (-1);
 	}
+	free(nbr);
 	return (0);
 }
