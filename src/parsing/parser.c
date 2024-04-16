@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 17:18:54 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/11 17:46:31 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/16 11:44:22 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,23 @@ static void	ft_handle_error(char *message, char **split)
 static int	ft_compare_int(void *a, void *b)
 {
 	return (*(int *)a - *(int *)b);
+}
+
+void ft_replace_value_by_index(t_dlist *list)
+{
+	t_dlist_node	*node;
+	int				*value;
+	int				i;
+
+	i = 0;
+	node = list->head;
+	while (node)
+	{
+		value = (int *)node->content;
+		*value = i;
+		node = node->next;
+		i++;
+	}
 }
 
 void	ft_parse_input(t_dlist *list, char **argv)
@@ -73,4 +90,6 @@ void	ft_parse_input(t_dlist *list, char **argv)
 		ft_free_split(split);
 		i++;
 	}
+	ft_dlist_sort(list, ft_compare_int);
+	ft_replace_value_by_index(list);
 }
