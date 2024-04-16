@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 12:36:42 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/16 11:43:38 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/16 18:46:57 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,9 @@ int	main(int argc, char const *argv[])
 		return (0);
 	ft_parse_input(ft_global_stack_a(), (char **)argv);
 	ft_print_both_stacks();
-	ft_print_stack_info(ft_global_stack_a());
-	ft_print_stack_info(ft_global_stack_b());
+	// ft_print_stack_info(ft_global_stack_a());
+	// ft_print_stack_info(ft_global_stack_b());
+	ft_sort();
 	ft_print_both_stacks();
 	ft_global_stacks_destroy();
 	return (0);

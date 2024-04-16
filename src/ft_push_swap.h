@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 00:55:15 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/16 18:26:03 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/16 18:43:07 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ void	ft_rotate_b(void);
 void	ft_rotate_reverse_a(void);
 void	ft_rotate_reverse_b(void);
 void	ft_rotate_reverse_r(void);
+
+// sorting
+void	ft_sort(void);
 
 
 #endif

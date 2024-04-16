@@ -25,7 +25,7 @@ SRCS := main.c \
 		stacks/operations/ft_push.c \
 		stacks/operations/ft_rotate.c \
 		stacks/operations/ft_rotate_reverse.c \
-		sorting/ft_k_sort.c \
+		sorting/ft_sort.c \
 		sorting/ft_sort_utils.c \
 		utils/ft_error_handler.c \
 		utils/ft_compare.c

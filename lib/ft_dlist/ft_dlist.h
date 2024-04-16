@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:40:27 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/16 09:44:20 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/16 19:38:11 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,18 @@ bool					ft_dlist_append_unique(t_dlist *lst, t_dlist_node *new,
 							int (*cmp)(void *, void *));
 
 void					ft_dlist_sort(t_dlist *lst, int (*cmp)(void *, void *));
+t_dlist					*ft_dlist_sort_copy(t_dlist *lst, int (*cmp)(void *,
+								void *));
+
+void					*ft_dlist_get(t_dlist *lst, int index);
+int						ft_dlist_index_of(t_dlist *lst, void *content,
+							int (*cmp)(void *, void *));
+
+void					*ft_dlist_get_max(t_dlist *lst, int (*cmp)(void *,
+								void *));
+void					*ft_dlist_get_min(t_dlist *lst, int (*cmp)(void *,
+								void *));
+int						ft_dlist_is_sorted(t_dlist *lst, int (*cmp)(void *,
+								void *));
 
 #endif
