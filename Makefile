@@ -25,6 +25,8 @@ SRCS := main.c \
 		stacks/operations/ft_push.c \
 		stacks/operations/ft_rotate.c \
 		stacks/operations/ft_rotate_reverse.c \
+		sorting/ft_k_sort.c \
+		sorting/ft_sort_utils.c \
 		utils/ft_error_handler.c \
 		utils/ft_compare.c
 # Object Files
@@ -43,6 +45,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 # Create necessary directories
 directories:
 	@mkdir -p $(OBJ_DIR)/parsing
+	@mkdir -p $(OBJ_DIR)/sorting
 	@mkdir -p $(OBJ_DIR)/stacks
 	@mkdir -p $(OBJ_DIR)/stacks/operations
 	@mkdir -p $(OBJ_DIR)/utils

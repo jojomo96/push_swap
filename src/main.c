@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 12:36:42 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/16 09:56:18 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/16 11:43:38 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	ft_print_int(t_dlist_node *node)
 	if (!node)
 		ft_printf("NULL");
 	else
-	ft_printf("%d (prev: %d, next: %d) ", *(int *)node->content,
-		node->prev ? *(int *)node->prev->content : 0,
-		node->next ? *(int *)node->next->content : 0);
+		ft_printf("%d (prev: %d, next: %d) ", *(int *)node->content,
+			node->prev ? *(int *)node->prev->content : 0,
+			node->next ? *(int *)node->next->content : 0);
 }
 void	ft_print_stack_info(t_dlist *stack)
 {
@@ -46,15 +46,6 @@ int	main(int argc, char const *argv[])
 		return (0);
 	ft_parse_input(ft_global_stack_a(), (char **)argv);
 	ft_print_both_stacks();
-
-	ft_swap_a();
-	ft_swap_b();
-	ft_push_a();
-	ft_push_a();
-	ft_push_a();
-	ft_push_b();
-	ft_push_b();
-
 	ft_print_stack_info(ft_global_stack_a());
 	ft_print_stack_info(ft_global_stack_b());
 	ft_print_both_stacks();
