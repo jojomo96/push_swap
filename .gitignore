@@ -1,10 +1,11 @@
+# Ignore everything
 *
 
+# Except directories; this allows us to search them for the files below
+!*/
+
+# But do not ignore .c, .h files, and Makefile anywhere
 !*.c
 !*.h
-!*\
-!*\*.c
-!*\*.h
 !Makefile
-!*\Makefile
 !.gitignore

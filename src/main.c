@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 12:36:42 by jmoritz           #+#    #+#             */
-/*   Updated: 12/04/2024 04:56:31 PM jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/16 09:11:58 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	main(int argc, char const *argv[])
 	ft_parse_input(ft_global_stack_a(), (char **)argv);
 	ft_dlist_print(ft_global_stack_a(), ft_print_int);
 	ft_printf("\n");
-  ft_rotate_a();
+	ft_rotate_a();
+	ft_rotate_reverse_a();
 	ft_dlist_print(ft_global_stack_a(), ft_print_int);
 	ft_printf("\n");
 	ft_global_stacks_destroy();
