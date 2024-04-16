@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 14:18:19 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/16 09:38:33 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/16 09:43:31 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_dlist_append(t_dlist *lst, t_dlist_node *new)
 	{
 		lst->head = new;
 		lst->tail = new;
-    lst->size++;
+		lst->size++;
 		return ;
 	}
 	lst->tail->next = new;

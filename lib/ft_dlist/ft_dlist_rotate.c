@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:46:50 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/10 15:51:54 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/16 09:44:30 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,10 @@ void	ft_dlist_rotate(t_dlist *lst)
 
 void	ft_dlist_reverse_rotate(t_dlist *lst)
 {
-t_dlist_node	*last;
+	t_dlist_node	*last;
 
 	if (!lst || !lst->head || !lst->tail || lst->head == lst->tail)
 		return ;
-
 	last = lst->tail;
 	lst->tail = last->prev;
 	lst->tail->next = NULL;
