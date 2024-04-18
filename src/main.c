@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 12:36:42 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/16 18:46:57 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/18 15:32:42 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ void	ft_print_int(t_dlist_node *node)
 	if (!node)
 		ft_printf("NULL");
 	else
-		ft_printf("%d (prev: %d, next: %d) ", *(int *)node->content,
-			node->prev ? *(int *)node->prev->content : 0,
-			node->next ? *(int *)node->next->content : 0);
+		ft_printf("%d ", *(int *)node->content);
+	// else
+	// 	ft_printf("%d (prev: %d, next: %d) ", *(int *)node->content,
+	// 		node->prev ? *(int *)node->prev->content : 0,
+	// 		node->next ? *(int *)node->next->content : 0);
 }
 void	ft_print_stack_info(t_dlist *stack)
 {

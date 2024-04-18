@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 00:55:15 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/16 18:43:07 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/18 15:21:54 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,16 @@ void	ft_rotate_reverse_r(void);
 
 // sorting
 void	ft_sort(void);
+int		ft_is_new_min(t_dlist *stack, int num);
+int		ft_get_index_of_min(t_dlist *stack);
+int		ft_is_new_max(t_dlist *stack, int num);
+int		ft_get_index_of_max(t_dlist *stack);
+int		ft_is_stack_sorted(t_dlist *stack);
 
+// cases
+int		ft_case_rarb(int num);
+int		ft_apply_rarb(int num, int is_a_to_b);
+
+void	ft_print_both_stacks(void);
 
 #endif
