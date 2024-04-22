@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:13:48 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/22 16:29:12 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/22 19:16:59 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_apply_rarb(int num, int is_a_to_b)
 	while (*(int *)list->head->content != num)
 		ft_rotate_b();
 	while (ft_find_place_in_a(num) > 0)
-		ft_rotate_r();
+		ft_rotate_a();
 	ft_push_a();
 	return (-1);
 }
@@ -64,7 +64,7 @@ int	ft_apply_rrarrb(int num, int is_a_to_b)
 	while (*(int *)list->head->content != num)
 		ft_rotate_reverse_b();
 	while (ft_find_place_in_a(num) > 0)
-		ft_rotate_reverse_r();
+		ft_rotate_reverse_a();
 	ft_push_a();
 	return (-1);
 }

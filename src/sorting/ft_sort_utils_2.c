@@ -6,18 +6,18 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 10:53:05 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/22 18:47:24 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/22 20:17:05 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_push_swap.h"
 
-int ft_get_index_in_a(int num)
+int	ft_get_index_in_a(int num)
 {
 	return (ft_dlist_index_of(ft_global_stack_a(), &num, ft_int_cmp));
 }
 
-int ft_get_index_in_b(int num)
+int	ft_get_index_in_b(int num)
 {
 	return (ft_dlist_index_of(ft_global_stack_b(), &num, ft_int_cmp));
 }
@@ -38,7 +38,7 @@ int	ft_find_place_in_b(int num)
 	current = list->head;
 	next = current->next;
 	while (current != list->tail && (num > *(int *)current->content
-			|| num > *(int *)next->content))
+			|| num < *(int *)next->content))
 	{
 		current = current->next;
 		next = current->next;
@@ -62,8 +62,8 @@ int	ft_find_place_in_a(int num)
 	i = 1;
 	current = list->head;
 	next = current->next;
-	while (current != list->tail && (num > *(int *)current->content
-			|| num > *(int *)next->content))
+	while (current != list->tail && (num > *(int *)current->content < num
+			|| num < *(int *)next->content))
 	{
 		current = current->next;
 		next = current->next;
