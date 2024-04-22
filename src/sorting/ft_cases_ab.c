@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 13:07:50 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/22 16:44:53 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/22 18:54:11 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ int	ft_case_rrarrb(int num, int is_a_to_b)
 		rotations = ft_find_place_in_b(num);
 		if (rotations)
 			rotations = size_b - rotations;
-		if (rotations < (size_a - ft_get_index_in_a(num)) && rotations > 0)
+		if (rotations < (size_a - ft_get_index_in_a(num)) && ft_get_index_in_a(num))
 			rotations = size_a - ft_get_index_in_a(num);
 		return (rotations);
 	}
 	rotations = ft_find_place_in_a(num);
 	if (rotations)
 		rotations = size_a - rotations;
-	if (rotations < (size_b - ft_get_index_in_b(num)) && rotations > 0)
+	if (rotations < (size_b - ft_get_index_in_b(num)) && ft_get_index_in_b(num))
 		rotations = size_b - ft_get_index_in_b(num);
 	return (rotations);
 }
@@ -90,10 +90,10 @@ int	ft_case_rarrb(int num, int is_a_to_b)
 		rotations = ft_get_index_in_a(num) + rotations;
 		return (rotations);
 	}
-			size = ft_global_stack_a()->size;
-		rotations = ft_find_place_in_a(num);
-		if (rotations)
-			rotations = size - rotations;
-		rotations = ft_get_index_in_b(num) + rotations;
-		return (rotations);
+	size = ft_global_stack_a()->size;
+	rotations = ft_find_place_in_a(num);
+	if (rotations)
+		rotations = size - rotations;
+	rotations = ft_get_index_in_b(num) + rotations;
+	return (rotations);
 }

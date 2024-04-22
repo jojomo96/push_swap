@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:08:57 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/22 18:31:27 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/22 18:55:53 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,22 +80,26 @@ void	ft_sort_until_3(int is_a_to_b)
 		{
 			if (ft_case_rarb(*(int *)node->content, is_a_to_b) == rotations)
 			{
-				printf("Running ft_apply_rarb\n");
+				// printf("Running ft_apply_rarb\n");
+				// ft_print_both_stacks();
 				rotations = ft_apply_rarb(*(int *)node->content, is_a_to_b);
 			}
 			else if (ft_case_rrarrb(*(int *)node->content, is_a_to_b) == rotations)
 			{
-				printf("Running ft_apply_rrarrb\n");
+				// printf("Running ft_apply_rrarrb\n");
+				// ft_print_both_stacks();
 				rotations = ft_apply_rrarrb(*(int *)node->content, is_a_to_b);
 			}
 			else if (ft_case_rarrb(*(int *)node->content, is_a_to_b) == rotations)
 			{
-				printf("Running ft_apply_rarrb\n");
+				// printf("Running ft_apply_rarrb\n");
+				// ft_print_both_stacks();
 				rotations = ft_apply_rarrb(*(int *)node->content, is_a_to_b);
 			}
 			else if (ft_case_rrarb(*(int *)node->content, is_a_to_b) == rotations)
 			{
-				printf("Running ft_apply_rrarb\n");
+				// printf("Running ft_apply_rrarb\n");
+				// ft_print_both_stacks();
 				rotations = ft_apply_rrarb(*(int *)node->content, is_a_to_b);
 			}
 			else
