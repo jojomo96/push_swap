@@ -6,11 +6,12 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 00:54:57 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/10 15:13:31 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/23 00:42:28 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_dlist.h"
+#include "../ft_libft/libft.h"
 
 t_dlist_node	*ft_dlist_new_node(void *content)
 {
@@ -54,4 +55,23 @@ void	ft_dlist_destroy(t_dlist **lst, void (*del)(void *))
 	}
 	free(*lst);
 	*lst = NULL;
+}
+
+t_dlist_node	*ft_dlist_new_node_deep(void *content, size_t content_size)
+{
+	t_dlist_node	*new;
+
+	new = (t_dlist_node *)malloc(sizeof(t_dlist_node));
+	if (!new)
+		return (NULL);
+	new->content = malloc(content_size);
+	if (!new->content)
+	{
+		free(new);
+		return (NULL);
+	}
+	ft_memcpy(new->content, content, content_size);
+	new->next = NULL;
+	new->prev = NULL;
+	return (new);
 }

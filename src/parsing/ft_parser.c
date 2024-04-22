@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 17:18:54 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/22 23:49:21 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/23 00:46:10 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	ft_replace_value_by_index(t_dlist *list, t_dlist *index_list)
 		node = node->next;
 		i++;
 	}
+	ft_dlist_destroy(&index_list, free);
 }
 
 void	process_split_strings(t_dlist *list, char **split, int j)
@@ -96,5 +97,6 @@ void	ft_parse_input(t_dlist *list, char **argv)
 		ft_free_split(split);
 		i++;
 	}
-	ft_replace_value_by_index(list, ft_dlist_sort_copy(list, ft_int_cmp));
+	ft_replace_value_by_index(list, ft_dlist_sort_copy(list, ft_int_cmp,
+			sizeof(int)));
 }

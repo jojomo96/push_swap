@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 18:55:35 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/22 19:31:17 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/23 00:44:08 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	*ft_dlist_get(t_dlist *lst, int index)
 		return (tmp->content);
 	return (NULL);
 }
-#include <stdio.h>
+
 int	ft_dlist_index_of(t_dlist *lst, void *content, int (*cmp)(void *, void *))
 {
 	t_dlist_node	*tmp;
@@ -47,7 +47,6 @@ int	ft_dlist_index_of(t_dlist *lst, void *content, int (*cmp)(void *, void *))
 		tmp = tmp->next;
 		i++;
 	}
-	printf("Index of %d not found\n", *(int *)content);
 	return (-1);
 }
 

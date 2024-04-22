@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:40:27 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/16 19:38:11 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/23 00:46:43 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct s_dlist
 
 t_dlist					*ft_dlist_new(void);
 t_dlist_node			*ft_dlist_new_node(void *content);
+t_dlist_node			*ft_dlist_new_node_deep(void *content,
+							size_t content_size);
 
 void					ft_dlist_destroy(t_dlist **lst, void (*del)(void *));
 void					ft_dlist_node_destroy(t_dlist_node **node,
@@ -62,7 +64,7 @@ bool					ft_dlist_append_unique(t_dlist *lst, t_dlist_node *new,
 
 void					ft_dlist_sort(t_dlist *lst, int (*cmp)(void *, void *));
 t_dlist					*ft_dlist_sort_copy(t_dlist *lst, int (*cmp)(void *,
-								void *));
+								void *), size_t content_size);
 
 void					*ft_dlist_get(t_dlist *lst, int index);
 int						ft_dlist_index_of(t_dlist *lst, void *content,
