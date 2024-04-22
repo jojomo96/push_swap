@@ -29,6 +29,7 @@ SRCS := main.c \
 		sorting/ft_sort_utils.c \
 		sorting/ft_sort_utils_2.c \
 		sorting/ft_cases_ab.c \
+		sorting/ft_cases_apply.c \
 		utils/ft_error_handler.c \
 		utils/ft_compare.c
 # Object Files

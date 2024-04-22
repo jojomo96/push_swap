@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 10:53:05 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/22 10:54:10 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/22 14:07:51 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,54 @@ int ft_get_index_in_a(int num)
 int ft_get_index_in_b(int num)
 {
 	return (ft_dlist_index_of(ft_global_stack_b(), &num, ft_int_cmp));
+}
+
+int	ft_find_place_in_b(int num)
+{
+	int				i;
+	t_dlist			*list;
+	t_dlist_node	*current;
+	t_dlist_node	*next;
+
+	list = ft_global_stack_b();
+	if (num > *(int *)list->head->content && num < *(int *)list->tail->content)
+		return (0);
+	if (ft_is_new_max(list, num) || ft_is_new_min(list, num))
+		return (ft_get_index_of_max(list));
+	i = 1;
+	current = list->head;
+	next = current->next;
+	while (current != list->tail && (num > *(int *)current->content
+			|| num < *(int *)next->content))
+	{
+		current = current->next;
+		next = current->next;
+		i++;
+	}
+	return (i);
+}
+
+int	ft_find_place_in_a(int num)
+{
+	int				i;
+	t_dlist			*list;
+	t_dlist_node	*current;
+	t_dlist_node	*next;
+
+	list = ft_global_stack_a();
+	if (num < *(int *)list->head->content && num > *(int *)list->tail->content)
+		return (0);
+	if (ft_is_new_max(list, num) || ft_is_new_min(list, num))
+		return (ft_get_index_of_min(list));
+	i = 1;
+	current = list->head;
+	next = current->next;
+	while (current != list->tail && (num > *(int *)current->content
+			|| num < *(int *)next->content))
+	{
+		current = current->next;
+		next = current->next;
+		i++;
+	}
+	return (i);
 }

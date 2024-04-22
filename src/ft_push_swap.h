@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 00:55:15 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/22 10:54:53 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/22 14:08:33 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,21 @@ int		ft_is_new_max(t_dlist *stack, int num);
 int		ft_get_index_of_max(t_dlist *stack);
 int		ft_is_stack_sorted(t_dlist *stack);
 
-int ft_get_index_in_a(int num);
-int ft_get_index_in_b(int num);
+int		ft_get_index_in_a(int num);
+int		ft_get_index_in_b(int num);
 
 // cases
 int		ft_case_rarb(int num);
 int		ft_apply_rarb(int num, int is_a_to_b);
+int		ft_case_rrarrb(int num);
+int		ft_apply_rrarrb(int num, int is_a_to_b);
+int		ft_apply_rrarb(int num, int is_a_to_b);
+int		ft_case_rrarb(int num);
+int		ft_apply_rarrb(int num, int is_a_to_b);
+int		ft_case_rarrb(int num);
 
 void	ft_print_both_stacks(void);
+int		ft_find_place_in_b(int num);
+int		ft_find_place_in_a(int num);
 
 #endif
