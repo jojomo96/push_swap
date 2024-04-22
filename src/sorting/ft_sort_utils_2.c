@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 10:53:05 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/22 22:09:02 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/22 22:48:49 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ int	ft_find_place_in_a(int num)
 	i = 1;
 	current = list->head;
 	next = current->next;
-	while (current != list->tail && (num > *(int *)current->content < num
-			|| num < *(int *)next->content))
+	while (current != list->tail && (num < *(int *)current->content
+			|| num > *(int *)next->content))
 	{
 		current = current->next;
 		next = current->next;
