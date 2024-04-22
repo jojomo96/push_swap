@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:08:57 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/22 16:29:01 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/22 16:52:28 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,29 +34,29 @@ void	ft_sort_3(void)
 	}
 	else
 	{
-		if (ft_dlist_index_of(stack, ft_dlist_get_max(stack, ft_int_cmp), ft_int_cmp) == 1)
+		if (ft_dlist_index_of(stack, ft_dlist_get_max(stack, ft_int_cmp),
+				ft_int_cmp) == 1)
 			ft_rotate_reverse_a();
 		else
 			ft_swap_a();
 	}
 }
 
-int	ft_find_fewerst_moves(t_dlist_node *node)
+int	ft_find_fewerst_moves(t_dlist_node * node, int is_a_to_b)
 {
 	int	rotations;
 
-	rotations = ft_case_rarb(*(int *)node->content);
+	rotations = ft_case_rarb(*(int *)node->content, is_a_to_b);
 	while (node)
 	{
-		if (ft_case_rarb(*(int *)node->content) < rotations)
-			rotations = ft_case_rarb(*(int *)node->content);
-		if (ft_case_rrarrb(*(int *)node->content) < rotations)
-			rotations = ft_case_rrarrb(*(int *)node->content);
-		if (ft_case_rarrb(*(int *)node->content) < rotations)
-			rotations = ft_case_rarrb(*(int *)node->content);
-		if (ft_case_rrarb(*(int *)node->content) < rotations)
-			rotations = ft_case_rrarb(*(int *)node->content);
-
+		if (ft_case_rarb(*(int *)node->content, is_a_to_b) < rotations)
+			rotations = ft_case_rarb(*(int *)node->content, is_a_to_b);
+		if (ft_case_rrarrb(*(int *)node->content, is_a_to_b) < rotations)
+			rotations = ft_case_rrarrb(*(int *)node->content, is_a_to_b);
+		if (ft_case_rarrb(*(int *)node->content, is_a_to_b) < rotations)
+			rotations = ft_case_rarrb(*(int *)node->content, is_a_to_b);
+		if (ft_case_rrarb(*(int *)node->content, is_a_to_b) < rotations)
+			rotations = ft_case_rrarb(*(int *)node->content, is_a_to_b);
 		node = node->next;
 	}
 	return (rotations);
@@ -71,16 +71,16 @@ void	ft_sort_until_3(void)
 		&& !ft_dlist_is_sorted(ft_global_stack_a(), ft_int_cmp))
 	{
 		node = ft_global_stack_a()->head;
-		rotations = ft_find_fewerst_moves(node);
+		rotations = ft_find_fewerst_moves(node, 1);
 		while (rotations >= 0)
 		{
-			if (ft_case_rarb(*(int *)node->content) == rotations)
+			if (ft_case_rarb(*(int *)node->content, 1) == rotations)
 				rotations = ft_apply_rarb(*(int *)node->content, 1);
-			else if (ft_case_rrarrb(*(int *)node->content) == rotations)
+			else if (ft_case_rrarrb(*(int *)node->content, 1) == rotations)
 				rotations = ft_apply_rrarrb(*(int *)node->content, 1);
-			else if (ft_case_rarrb(*(int *)node->content) == rotations)
+			else if (ft_case_rarrb(*(int *)node->content, 1) == rotations)
 				rotations = ft_apply_rarrb(*(int *)node->content, 1);
-			else if (ft_case_rrarb(*(int *)node->content) == rotations)
+			else if (ft_case_rrarb(*(int *)node->content, 1) == rotations)
 				rotations = ft_apply_rrarb(*(int *)node->content, 1);
 			else
 				node = node->next;
@@ -104,6 +104,6 @@ void	ft_sort(void)
 	if (!ft_is_stack_sorted(ft_global_stack_a())
 		&& ft_global_stack_a()->size > 3)
 		ft_sort_until_3();
-	// if(!ft_is_stack_sorted(ft_global_stack_a()))
-	// 	ft_sort_3();
+	if (!ft_is_stack_sorted(ft_global_stack_a()))
+		ft_sort_3();
 }
