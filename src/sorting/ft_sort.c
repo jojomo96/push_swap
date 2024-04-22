@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:08:57 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/22 20:28:19 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/22 23:04:47 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ void	ft_sort_3(void)
 	}
 	else
 	{
-		if (ft_dlist_index_of(stack, ft_dlist_get_max(stack, ft_int_cmp),
-				ft_int_cmp) == 1)
+		if (ft_get_index_of_max(stack) == 1)
 			ft_rotate_reverse_a();
 		else
 			ft_swap_a();
@@ -44,12 +43,12 @@ void	ft_sort_3(void)
 
 void	ft_sort_last_cunck(void)
 {
-	int min;
-	int index_min;
+	int	min;
+	int	index_min;
 
 	min = *(int *)ft_dlist_get_min(ft_global_stack_a(), ft_int_cmp);
 	index_min = ft_dlist_index_of(ft_global_stack_a(), &min, ft_int_cmp);
-	if(index_min < (int)ft_global_stack_a()->size - index_min)
+	if (index_min < (int)ft_global_stack_a()->size - index_min)
 	{
 		while (*(int *)ft_global_stack_a()->head->content != min)
 			ft_rotate_a();
@@ -84,27 +83,24 @@ int	ft_minimum_rotations(t_dlist_node *node, int is_a_to_b)
 void	ft_sort_until_3(int is_a_to_b)
 {
 	t_dlist_node	*node;
-	int				rotations;
+	int				rot;
 
 	while ((is_a_to_b && ft_global_stack_a()->size > 3
 			&& !ft_dlist_is_sorted(ft_global_stack_a(), ft_int_cmp))
 		|| (!is_a_to_b && ft_global_stack_b()->head))
 	{
-		if (is_a_to_b)
-			node = ft_global_stack_a()->head;
-		else
-			node = ft_global_stack_b()->head;
-		rotations = ft_minimum_rotations(node, is_a_to_b);
-		while (rotations >= 0)
+		node = ft_get_corresponding_stack(is_a_to_b)->head;
+		rot = ft_minimum_rotations(node, is_a_to_b);
+		while (rot >= 0)
 		{
-			if (ft_case_rarb(*(int *)node->content, is_a_to_b) == rotations)
-				rotations = ft_apply_rarb(*(int *)node->content, is_a_to_b);
-			else if (ft_case_rrarrb(*(int *)node->content, is_a_to_b) == rotations)
-				rotations = ft_apply_rrarrb(*(int *)node->content, is_a_to_b);
-			else if (ft_case_rarrb(*(int *)node->content, is_a_to_b) == rotations)
-				rotations = ft_apply_rarrb(*(int *)node->content, is_a_to_b);
-			else if (ft_case_rrarb(*(int *)node->content, is_a_to_b) == rotations)
-				rotations = ft_apply_rrarb(*(int *)node->content, is_a_to_b);
+			if (ft_case_rarb(*(int *)node->content, is_a_to_b) == rot)
+				rot = ft_apply_rarb(*(int *)node->content, is_a_to_b);
+			else if (ft_case_rrarrb(*(int *)node->content, is_a_to_b) == rot)
+				rot = ft_apply_rrarrb(*(int *)node->content, is_a_to_b);
+			else if (ft_case_rarrb(*(int *)node->content, is_a_to_b) == rot)
+				rot = ft_apply_rarrb(*(int *)node->content, is_a_to_b);
+			else if (ft_case_rrarb(*(int *)node->content, is_a_to_b) == rot)
+				rot = ft_apply_rrarb(*(int *)node->content, is_a_to_b);
 			else
 				node = node->next;
 		}

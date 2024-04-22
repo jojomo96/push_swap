@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:13:48 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/22 22:26:51 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/22 22:58:03 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	ft_apply_rarb(int num, int is_a_to_b)
 
 int	ft_apply_rrarrb(int num, int is_a_to_b)
 {
-	// printf("Case rrarrb is applyed with number %d\n", num);
 	t_dlist	*list;
 
 	if (is_a_to_b)

@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 10:53:05 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/22 22:48:49 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/22 23:01:21 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,11 @@ int	ft_find_place_in_a(int num)
 		i++;
 	}
 	return (i);
+}
+
+t_dlist	*ft_get_corresponding_stack( int is_a_to_b)
+{
+	if (is_a_to_b)
+		return (ft_global_stack_a());
+	return (ft_global_stack_b());
 }

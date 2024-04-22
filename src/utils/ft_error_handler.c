@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 15:57:51 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/16 09:45:50 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/22 23:16:34 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ void	ft_error(char *message)
 	ft_dlist_destroy(&stack_a, free);
 	ft_dlist_destroy(&stack_b, free);
 	ft_putstr_fd("Error\n", 2);
-	ft_putstr_fd(message, 2);
-	ft_putchar_fd('\n', 2);
+	if (DEBUG)
+	{
+		ft_putstr_fd(message, 2);
+		ft_putchar_fd('\n', 2);
+	}
 	exit(EXIT_FAILURE);
 }

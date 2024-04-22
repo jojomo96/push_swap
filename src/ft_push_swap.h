@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 00:55:15 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/22 16:46:20 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/22 23:16:24 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+# define DEBUG 0
 
 t_dlist	*ft_global_stack_a(void);
 t_dlist	*ft_global_stack_b(void);
@@ -61,6 +63,7 @@ int		ft_case_rrarb(int num, int is_a_to_b);
 int		ft_apply_rarrb(int num, int is_a_to_b);
 int		ft_case_rarrb(int num, int is_a_to_b);
 
+t_dlist	*ft_get_corresponding_stack( int is_a_to_b);
 void	ft_print_both_stacks(void);
 int		ft_find_place_in_b(int num);
 int		ft_find_place_in_a(int num);

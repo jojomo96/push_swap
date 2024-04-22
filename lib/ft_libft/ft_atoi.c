@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 23:10:16 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/03/07 11:27:39 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/22 23:20:37 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ int	ft_atoi(const char *str)
 	}
 	while (*str >= '0' && *str <= '9')
 	{
+		if (sign > 0 && result > (INT_MAX - (*str - '0')) / 10)
+			return (INT_MAX);
+		if (sign < 0 && result > (INT_MIN + (*str - '0')) / -10)
+			return (INT_MIN);
 		result = (result * 10) + (*str - '0');
-		if (result * sign > INT_MAX)
-			return (-1);
-		if (result * sign < INT_MIN)
-			return (0);
 		str++;
 	}
 	return (result * sign);
