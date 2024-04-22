@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   ft_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 17:18:54 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/22 23:13:47 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/22 23:49:21 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,12 @@ void	ft_replace_value_by_index(t_dlist *list, t_dlist *index_list)
 	}
 }
 
-void	process_split_strings(t_dlist *list, char **split)
+void	process_split_strings(t_dlist *list, char **split, int j)
 {
-	int				j;
 	int				*value;
 	t_dlist_node	*node;
+	int				error;
 
-	j = 0;
 	while (split[j])
 	{
 		if (!ft_isnumber(split[j]))
@@ -64,7 +63,12 @@ void	process_split_strings(t_dlist *list, char **split)
 		value = malloc(sizeof(int));
 		if (!value)
 			ft_handle_error("Memory allocation failed for integer", split);
-		*value = ft_atoi(split[j]);
+		*value = ft_atoi_with_error(split[j++], &error);
+		if (error)
+		{
+			free(value);
+			ft_handle_error("Invalid number format", split);
+		}
 		node = ft_dlist_new_node(value);
 		if (!ft_dlist_append_unique(list, node, ft_int_cmp))
 		{
@@ -72,7 +76,6 @@ void	process_split_strings(t_dlist *list, char **split)
 			free(node);
 			ft_handle_error("Duplicate value or append failed", split);
 		}
-		j++;
 	}
 }
 
@@ -89,7 +92,7 @@ void	ft_parse_input(t_dlist *list, char **argv)
 			ft_error("Memory allocation failed for split");
 		if (!split[0])
 			ft_handle_error("Empty string", split);
-		process_split_strings(list, split);
+		process_split_strings(list, split, 0);
 		ft_free_split(split);
 		i++;
 	}

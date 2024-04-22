@@ -19,7 +19,8 @@ OBJ_DIR := lib/obj
 
 # Sources
 SRCS := main.c \
-		parsing/parser.c \
+		parsing/ft_parser.c \
+		parsing/ft_atoi_with_error_handling.c \
 		stacks/ft_global_stacks.c \
 		stacks/operations/ft_swap.c \
 		stacks/operations/ft_push.c \

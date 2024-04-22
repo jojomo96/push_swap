@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 00:55:15 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/22 23:16:24 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/23 00:16:33 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ int		ft_case_rrarb(int num, int is_a_to_b);
 int		ft_apply_rarrb(int num, int is_a_to_b);
 int		ft_case_rarrb(int num, int is_a_to_b);
 
-t_dlist	*ft_get_corresponding_stack( int is_a_to_b);
-void	ft_print_both_stacks(void);
+t_dlist	*ft_get_corresponding_stack(int is_a_to_b);
 int		ft_find_place_in_b(int num);
 int		ft_find_place_in_a(int num);
+int		ft_atoi_with_error(const char *str, int *error);
 
 #endif
