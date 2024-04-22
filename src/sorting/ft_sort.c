@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:08:57 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/18 16:56:11 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/22 10:40:20 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,27 +34,49 @@ void	ft_sort_3(void)
 	}
 	else
 	{
-		if (ft_dlist_index_of(stack, ft_dlist_get_max(stack, ft_int_cmp),
-				ft_int_cmp) == 1)
+		if (ft_dlist_index_of(stack, ft_dlist_get_max(stack, ft_int_cmp), ft_int_cmp) == 1)
 			ft_rotate_reverse_a();
 		else
 			ft_swap_a();
 	}
 }
 
+int	ft_find_fewerst_moves(t_dlist_node *node)
+{
+	int	rotations;
+
+	rotations = ft_case_rarb(*(int *)node->content);
+	while (node->next)
+	{
+		if (ft_case_rarb(*(int *)node->next->content) < rotations)
+			rotations = ft_case_rarb(*(int *)node->next->content);
+		node = node->next;
+	}
+	return (rotations);
+}
+
 void	ft_sort_until_3(void)
 {
-	ft_push_b();
-	ft_print_both_stacks();
-	int val = 3;
-	printf("move count for 3 %d\n", ft_case_rarb(val));
-	ft_apply_rarb(val, 1);
-	printf("move count for 6 %d\n", ft_case_rarb(6));
-	ft_apply_rarb(6, 1);
-	printf("move count for 5 %d\n", ft_case_rarb(5));
-	ft_apply_rarb(5, 1);
-	printf("move count for 0 %d\n", ft_case_rarb(0));
-	ft_apply_rarb(0, 1);
+	t_dlist_node	*node;
+	int				rotations;
+
+	while (ft_global_stack_a()->size > 3
+		&& !ft_dlist_is_sorted(ft_global_stack_a(), ft_int_cmp))
+	{
+		node = ft_global_stack_a()->head;
+		rotations = ft_find_fewerst_moves(ft_global_stack_b()->head);
+		while (rotations >= 0)
+		{
+			if (ft_case_rarb(*(int *)node->content) == rotations)
+			{
+				rotations = ft_apply_rarb(*(int *)node->content, 1);
+				// ft_print_both_stacks();
+				// ft_printf("\n");
+			}
+			node = node->next;
+		}
+	}
+	// ft_sort_3();
 }
 
 void	ft_sort(void)

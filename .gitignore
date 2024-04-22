@@ -9,3 +9,5 @@
 !*.h
 !Makefile
 !.gitignore
+
+push_swap_visualizer/
