@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:08:57 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/22 19:35:52 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/22 20:28:19 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,26 @@ void	ft_sort_3(void)
 	}
 }
 
-int	ft_find_fewerst_moves(t_dlist_node *node, int is_a_to_b)
+void	ft_sort_last_cunck(void)
+{
+	int min;
+	int index_min;
+
+	min = *(int *)ft_dlist_get_min(ft_global_stack_a(), ft_int_cmp);
+	index_min = ft_dlist_index_of(ft_global_stack_a(), &min, ft_int_cmp);
+	if(index_min < (int)ft_global_stack_a()->size - index_min)
+	{
+		while (*(int *)ft_global_stack_a()->head->content != min)
+			ft_rotate_a();
+	}
+	else
+	{
+		while (*(int *)ft_global_stack_a()->head->content != min)
+			ft_rotate_reverse_a();
+	}
+}
+
+int	ft_minimum_rotations(t_dlist_node *node, int is_a_to_b)
 {
 	int	rotations;
 
@@ -59,8 +78,6 @@ int	ft_find_fewerst_moves(t_dlist_node *node, int is_a_to_b)
 			rotations = ft_case_rrarb(*(int *)node->content, is_a_to_b);
 		node = node->next;
 	}
-	if(rotations > 100)
-		printf("rotations: %d\n", rotations);
 	return (rotations);
 }
 
@@ -77,7 +94,7 @@ void	ft_sort_until_3(int is_a_to_b)
 			node = ft_global_stack_a()->head;
 		else
 			node = ft_global_stack_b()->head;
-		rotations = ft_find_fewerst_moves(node, is_a_to_b);
+		rotations = ft_minimum_rotations(node, is_a_to_b);
 		while (rotations >= 0)
 		{
 			if (ft_case_rarb(*(int *)node->content, is_a_to_b) == rotations)
@@ -100,7 +117,6 @@ void	ft_sort(void)
 		return (ft_swap_a());
 	if (ft_global_stack_a()->size == 3)
 		return (ft_sort_3());
-	// push 2 elements to stack b
 	if (!ft_is_stack_sorted(ft_global_stack_a())
 		&& ft_global_stack_a()->size > 3)
 		ft_push_b();
@@ -113,4 +129,5 @@ void	ft_sort(void)
 	if (!ft_is_stack_sorted(ft_global_stack_a()))
 		ft_sort_3();
 	ft_sort_until_3(0);
+	ft_sort_last_cunck();
 }
