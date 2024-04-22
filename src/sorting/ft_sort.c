@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:08:57 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/22 16:52:28 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/22 18:31:27 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ void	ft_sort_3(void)
 	}
 }
 
-int	ft_find_fewerst_moves(t_dlist_node * node, int is_a_to_b)
+int	ft_find_fewerst_moves(t_dlist_node *node, int is_a_to_b)
 {
 	int	rotations;
 
-	rotations = ft_case_rarb(*(int *)node->content, is_a_to_b);
+	rotations = ft_case_rrarrb(*(int *)node->content, is_a_to_b);
 	while (node)
 	{
 		if (ft_case_rarb(*(int *)node->content, is_a_to_b) < rotations)
@@ -62,26 +62,42 @@ int	ft_find_fewerst_moves(t_dlist_node * node, int is_a_to_b)
 	return (rotations);
 }
 
-void	ft_sort_until_3(void)
+void	ft_sort_until_3(int is_a_to_b)
 {
 	t_dlist_node	*node;
 	int				rotations;
 
-	while (ft_global_stack_a()->size > 3
-		&& !ft_dlist_is_sorted(ft_global_stack_a(), ft_int_cmp))
+	while ((is_a_to_b && ft_global_stack_a()->size > 3
+			&& !ft_dlist_is_sorted(ft_global_stack_a(), ft_int_cmp))
+		|| (!is_a_to_b && ft_global_stack_b()->head))
 	{
-		node = ft_global_stack_a()->head;
-		rotations = ft_find_fewerst_moves(node, 1);
+		if (is_a_to_b)
+			node = ft_global_stack_a()->head;
+		else
+			node = ft_global_stack_b()->head;
+		rotations = ft_find_fewerst_moves(node, is_a_to_b);
 		while (rotations >= 0)
 		{
-			if (ft_case_rarb(*(int *)node->content, 1) == rotations)
-				rotations = ft_apply_rarb(*(int *)node->content, 1);
-			else if (ft_case_rrarrb(*(int *)node->content, 1) == rotations)
-				rotations = ft_apply_rrarrb(*(int *)node->content, 1);
-			else if (ft_case_rarrb(*(int *)node->content, 1) == rotations)
-				rotations = ft_apply_rarrb(*(int *)node->content, 1);
-			else if (ft_case_rrarb(*(int *)node->content, 1) == rotations)
-				rotations = ft_apply_rrarb(*(int *)node->content, 1);
+			if (ft_case_rarb(*(int *)node->content, is_a_to_b) == rotations)
+			{
+				printf("Running ft_apply_rarb\n");
+				rotations = ft_apply_rarb(*(int *)node->content, is_a_to_b);
+			}
+			else if (ft_case_rrarrb(*(int *)node->content, is_a_to_b) == rotations)
+			{
+				printf("Running ft_apply_rrarrb\n");
+				rotations = ft_apply_rrarrb(*(int *)node->content, is_a_to_b);
+			}
+			else if (ft_case_rarrb(*(int *)node->content, is_a_to_b) == rotations)
+			{
+				printf("Running ft_apply_rarrb\n");
+				rotations = ft_apply_rarrb(*(int *)node->content, is_a_to_b);
+			}
+			else if (ft_case_rrarb(*(int *)node->content, is_a_to_b) == rotations)
+			{
+				printf("Running ft_apply_rrarb\n");
+				rotations = ft_apply_rrarb(*(int *)node->content, is_a_to_b);
+			}
 			else
 				node = node->next;
 		}
@@ -103,7 +119,8 @@ void	ft_sort(void)
 		ft_push_b();
 	if (!ft_is_stack_sorted(ft_global_stack_a())
 		&& ft_global_stack_a()->size > 3)
-		ft_sort_until_3();
+		ft_sort_until_3(1);
 	if (!ft_is_stack_sorted(ft_global_stack_a()))
 		ft_sort_3();
+	ft_sort_until_3(0);
 }
