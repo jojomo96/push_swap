@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cases_ab_apply.c                                :+:      :+:    :+:   */
+/*   ft_cases_apply.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:13:48 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/22 11:43:53 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/22 16:29:12 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	ft_apply_rarb(int num, int is_a_to_b)
 
 int	ft_apply_rrarrb(int num, int is_a_to_b)
 {
+	// printf("Case rrarrb is applyed with number %d\n", num);
 	t_dlist	*list;
 
 	if (is_a_to_b)

@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:08:57 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/22 16:05:21 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/22 16:29:01 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,17 @@ int	ft_find_fewerst_moves(t_dlist_node *node)
 	int	rotations;
 
 	rotations = ft_case_rarb(*(int *)node->content);
-	printf("Number %d is taking %d rotations\n", *(int *)node->content, rotations);
 	while (node)
 	{
 		if (ft_case_rarb(*(int *)node->content) < rotations)
-		{
 			rotations = ft_case_rarb(*(int *)node->content);
-			printf("new lowest: %d\n", ft_case_rarb(*(int *)node->content));
-			printf("It is taking %d rotations\n", rotations);
-		}
-		// if (ft_case_rrarrb(*(int *)node->next->content) < rotations)
-		// 	rotations = ft_case_rrarrb(*(int *)node->next->content);
-		// if (ft_case_rarrb(*(int *)node->content) < rotations)
-		// 	rotations = ft_case_rarrb(*(int *)node->content);
-		// if (ft_case_rrarb(*(int *)node->content) < rotations)
-		// 	rotations = ft_case_rrarb(*(int *)node->content);
+		if (ft_case_rrarrb(*(int *)node->content) < rotations)
+			rotations = ft_case_rrarrb(*(int *)node->content);
+		if (ft_case_rarrb(*(int *)node->content) < rotations)
+			rotations = ft_case_rarrb(*(int *)node->content);
+		if (ft_case_rrarb(*(int *)node->content) < rotations)
+			rotations = ft_case_rrarb(*(int *)node->content);
+
 		node = node->next;
 	}
 	return (rotations);
@@ -78,18 +74,14 @@ void	ft_sort_until_3(void)
 		rotations = ft_find_fewerst_moves(node);
 		while (rotations >= 0)
 		{
-			ft_print_both_stacks();
 			if (ft_case_rarb(*(int *)node->content) == rotations)
-			{
-				printf("Number %d is rotated\n", *(int *)node->content);
 				rotations = ft_apply_rarb(*(int *)node->content, 1);
-			}
-			// else if (ft_case_rrarrb(*(int *)node->content) == rotations)
-			// 	rotations = ft_apply_rrarrb(*(int *)node->content, 1);
-			// else if (ft_case_rarrb(*(int *)node->content) == rotations)
-			// 	rotations = ft_apply_rarrb(*(int *)node->content, 1);
-			// else if (ft_case_rrarb(*(int *)node->content) == rotations)
-			// 	rotations = ft_apply_rrarb(*(int *)node->content, 1);
+			else if (ft_case_rrarrb(*(int *)node->content) == rotations)
+				rotations = ft_apply_rrarrb(*(int *)node->content, 1);
+			else if (ft_case_rarrb(*(int *)node->content) == rotations)
+				rotations = ft_apply_rarrb(*(int *)node->content, 1);
+			else if (ft_case_rrarb(*(int *)node->content) == rotations)
+				rotations = ft_apply_rrarb(*(int *)node->content, 1);
 			else
 				node = node->next;
 		}
