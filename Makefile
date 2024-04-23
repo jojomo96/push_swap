@@ -1,6 +1,11 @@
 # Project Name
 NAME := push_swap
 
+# Bonus Project Name
+BONUS_NAME := checker
+
+INCLUDES := src/ft_push_swap.h
+
 # Compiler
 CC := cc
 
@@ -18,36 +23,47 @@ SRC_DIR := src
 OBJ_DIR := lib/obj
 
 # Sources
-SRCS := main.c \
-		parsing/ft_parser.c \
-		parsing/ft_atoi_with_error_handling.c \
-		stacks/ft_global_stacks.c \
-		stacks/operations/ft_swap.c \
-		stacks/operations/ft_push.c \
-		stacks/operations/ft_rotate.c \
-		stacks/operations/ft_rotate_reverse.c \
-		sorting/ft_sort.c \
-		sorting/ft_sort_utils.c \
-		sorting/ft_sort_utils_2.c \
-		sorting/ft_cases_ab.c \
-		sorting/ft_cases_apply.c \
-		utils/ft_error_handler.c \
-		utils/ft_compare.c
+SRCS := parsing/ft_parser.c \
+        parsing/ft_atoi_with_error_handling.c \
+        stacks/ft_global_stacks.c \
+        stacks/operations/ft_swap.c \
+        stacks/operations/ft_push.c \
+        stacks/operations/ft_rotate.c \
+        stacks/operations/ft_rotate_reverse.c \
+        sorting/ft_sort.c \
+        sorting/ft_sort_utils.c \
+        sorting/ft_sort_utils_2.c \
+        sorting/ft_cases_ab.c \
+        sorting/ft_cases_apply.c \
+        utils/ft_error_handler.c \
+        utils/ft_compare.c
+# Bonus Sources
+BONUS_SRCS := $(SRCS) \
+              checker/ft_checker.c
+SRCS += main.c
+
 # Object Files
 OBJS := $(SRCS:%.c=$(OBJ_DIR)/%.o)
+BONUS_OBJS := $(BONUS_SRCS:%.c=$(OBJ_DIR)/%.o)
 
 # Compilation Rule
 all: directories libft $(NAME)
 
+bonus: directories libft $(BONUS_NAME)
+
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^ $(LIBFT_FLAGS)
 
+$(BONUS_NAME): $(BONUS_OBJS)
+	$(CC) $(CFLAGS) -o $@ $^ $(LIBFT_FLAGS)
+
 # Rule for making object files
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLUDES)
 	$(CC) $(CFLAGS) -I$(LIBFT_INC) -c $< -o $@
 
 # Create necessary directories
 directories:
+	@mkdir -p $(OBJ_DIR)/checker
 	@mkdir -p $(OBJ_DIR)/parsing
 	@mkdir -p $(OBJ_DIR)/sorting
 	@mkdir -p $(OBJ_DIR)/stacks
@@ -64,9 +80,9 @@ clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(BONUS_NAME)
 	$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
-.PHONY: all clean fclean re libft directories
+.PHONY: all clean fclean re libft directories bonus

@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:08:57 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/22 23:04:47 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/23 14:21:15 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,22 @@ void	ft_sort_3(void)
 	if (*(int *)ft_dlist_get_min(stack,
 			ft_int_cmp) == *(int *)stack->head->content)
 	{
-		ft_rotate_reverse_a();
-		ft_swap_a();
+		ft_rotate_reverse_a(1);
+		ft_swap_a(1);
 	}
 	else if (*(int *)ft_dlist_get_max(stack,
 			ft_int_cmp) == *(int *)stack->head->content)
 	{
-		ft_rotate_a();
+		ft_rotate_a(1);
 		if (!ft_dlist_is_sorted(stack, ft_int_cmp))
-			ft_swap_a();
+			ft_swap_a(1);
 	}
 	else
 	{
 		if (ft_get_index_of_max(stack) == 1)
-			ft_rotate_reverse_a();
+			ft_rotate_reverse_a(1);
 		else
-			ft_swap_a();
+			ft_swap_a(1);
 	}
 }
 
@@ -51,12 +51,12 @@ void	ft_sort_last_cunck(void)
 	if (index_min < (int)ft_global_stack_a()->size - index_min)
 	{
 		while (*(int *)ft_global_stack_a()->head->content != min)
-			ft_rotate_a();
+			ft_rotate_a(1);
 	}
 	else
 	{
 		while (*(int *)ft_global_stack_a()->head->content != min)
-			ft_rotate_reverse_a();
+			ft_rotate_reverse_a(1);
 	}
 }
 
@@ -110,15 +110,15 @@ void	ft_sort_until_3(int is_a_to_b)
 void	ft_sort(void)
 {
 	if (ft_global_stack_a()->size == 2)
-		return (ft_swap_a());
+		return (ft_swap_a(1));
 	if (ft_global_stack_a()->size == 3)
 		return (ft_sort_3());
 	if (!ft_is_stack_sorted(ft_global_stack_a())
 		&& ft_global_stack_a()->size > 3)
-		ft_push_b();
+		ft_push_b(1);
 	if (!ft_is_stack_sorted(ft_global_stack_a())
 		&& ft_global_stack_a()->size > 3)
-		ft_push_b();
+		ft_push_b(1);
 	if (!ft_is_stack_sorted(ft_global_stack_a())
 		&& ft_global_stack_a()->size > 3)
 		ft_sort_until_3(1);

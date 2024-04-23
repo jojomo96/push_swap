@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 08:55:10 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/16 09:05:07 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/23 14:19:39 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,24 @@ void	ft_swap(t_dlist *stack)
 		stack->head = second;
 }
 
-void	ft_swap_a(void)
+void	ft_swap_a(int print)
 {
 	ft_swap(ft_global_stack_a());
-	ft_printf("sa\n");
+	if (print)
+		ft_printf("sa\n");
 }
 
-void	ft_swap_b(void)
+void	ft_swap_b(int print)
 {
 	ft_swap(ft_global_stack_b());
-	ft_printf("sb\n");
+	if (print)
+		ft_printf("sb\n");
 }
 
-void	ft_swap_s(void)
+void	ft_swap_s(int print)
 {
 	ft_swap(ft_global_stack_a());
 	ft_swap(ft_global_stack_b());
-	ft_printf("ss\n");
+	if (print)
+		ft_printf("ss\n");
 }

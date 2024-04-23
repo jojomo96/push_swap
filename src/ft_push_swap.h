@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 00:55:15 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/23 00:16:33 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/23 14:20:17 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,17 @@ void	ft_error(char *message);
 int		ft_int_cmp(void *a, void *b);
 
 // operations
-void	ft_swap_a(void);
-void	ft_swap_b(void);
-void	ft_swap_s(void);
-void	ft_push_a(void);
-void	ft_push_b(void);
-void	ft_rotate_r(void);
-void	ft_rotate_a(void);
-void	ft_rotate_b(void);
-void	ft_rotate_reverse_a(void);
-void	ft_rotate_reverse_b(void);
-void	ft_rotate_reverse_r(void);
+void	ft_swap_a(int print);
+void	ft_swap_b(int print);
+void	ft_swap_s(int print);
+void	ft_push_a(int print);
+void	ft_push_b(int print);
+void	ft_rotate_r(int print);
+void	ft_rotate_a(int print);
+void	ft_rotate_b(int print);
+void	ft_rotate_reverse_a(int print);
+void	ft_rotate_reverse_b(int print);
+void	ft_rotate_reverse_r(int print);
 
 // sorting
 void	ft_sort(void);

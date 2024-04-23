@@ -6,7 +6,7 @@
 /*   By: jmoritz < jmoritz@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 09:06:01 by jmoritz           #+#    #+#             */
-/*   Updated: 2024/04/16 18:47:44 by jmoritz          ###   ########.fr       */
+/*   Updated: 2024/04/23 14:18:53 by jmoritz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,16 @@ void	ft_push(t_dlist *src, t_dlist *dst)
 		ft_dlist_prepend(dst, node);
 }
 
-void	ft_push_a(void)
+void	ft_push_a(int print)
 {
 	ft_push(ft_global_stack_b(), ft_global_stack_a());
-	ft_printf("pa\n");
+	if (print)
+		ft_printf("pa\n");
 }
 
-void	ft_push_b(void)
+void	ft_push_b(int print)
 {
 	ft_push(ft_global_stack_a(), ft_global_stack_b());
-	ft_printf("pb\n");
+	if (print)
+		ft_printf("pb\n");
 }
