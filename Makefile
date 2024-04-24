@@ -46,42 +46,49 @@ SRCS += main.c
 OBJS := $(SRCS:%.c=$(OBJ_DIR)/%.o)
 BONUS_OBJS := $(BONUS_SRCS:%.c=$(OBJ_DIR)/%.o)
 
+# Colors
+RED := \033[0;31m
+GREEN := \033[0;32m
+YELLOW := \033[1;33m
+NC := \033[0m # No Color
+
 # Compilation Rule
 all: directories libft $(NAME)
 
 bonus: directories libft $(BONUS_NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $^ $(LIBFT_FLAGS)
+	@echo "$(GREEN)Linking...$(NC)"
+	@$(CC) $(CFLAGS) -o $@ $^ $(LIBFT_FLAGS)
+	@echo "$(GREEN)Finished building $(NAME)$(NC)"
 
 $(BONUS_NAME): $(BONUS_OBJS)
-	$(CC) $(CFLAGS) -o $@ $^ $(LIBFT_FLAGS)
+	@echo "$(GREEN)Linking...$(NC)"
+	@$(CC) $(CFLAGS) -o $@ $^ $(LIBFT_FLAGS)
+	@echo "$(GREEN)Finished building $(BONUS_NAME)$(NC)"
 
 # Rule for making object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLUDES)
-	$(CC) $(CFLAGS) -I$(LIBFT_INC) -c $< -o $@
-
-# Create necessary directories
-directories:
-	@mkdir -p $(OBJ_DIR)/checker
-	@mkdir -p $(OBJ_DIR)/parsing
-	@mkdir -p $(OBJ_DIR)/sorting
-	@mkdir -p $(OBJ_DIR)/stacks
-	@mkdir -p $(OBJ_DIR)/stacks/operations
-	@mkdir -p $(OBJ_DIR)/utils
+	@echo "$(YELLOW)Compiling $<$(NC)"
+	@mkdir -p $(OBJ_DIR) $(addprefix $(OBJ_DIR)/, $(dir $(SRCS)))
+	@$(CC) $(CFLAGS) -I$(LIBFT_INC) -c $< -o $@
+	@echo "$(GREEN)[OK]$(NC)"
 
 # Rule for making the library
 libft:
-	$(MAKE) -C $(LIBFT_DIR)
+	@echo "$(YELLOW)Making libft$(NC)"
+	@$(MAKE) -C $(LIBFT_DIR) --no-print-directory
 
 # Cleaning Rules
 clean:
-	rm -rf $(OBJ_DIR)
-	$(MAKE) -C $(LIBFT_DIR) clean
+	@echo "$(RED)Cleaning up objects$(NC)"
+	@rm -rf $(OBJ_DIR)
+	@$(MAKE) -C $(LIBFT_DIR) clean --no-print-directory
 
 fclean: clean
-	rm -f $(NAME) $(BONUS_NAME)
-	$(MAKE) -C $(LIBFT_DIR) fclean
+	@echo "$(RED)Removing executables$(NC)"
+	@rm -f $(NAME) $(BONUS_NAME)
+	@$(MAKE) -C $(LIBFT_DIR) fclean --no-print-directory
 
 re: fclean all
 
