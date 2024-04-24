@@ -4,13 +4,14 @@ NAME := push_swap
 # Bonus Project Name
 BONUS_NAME := checker
 
-INCLUDES := src/ft_push_swap.h
+# Include Directory for headers
+INCLUDE_DIR := src
 
 # Compiler
 CC := cc
 
 # Compiler Flags
-CFLAGS := -Wall -Wextra -Werror
+CFLAGS := -Wall -Wextra -Werror -MMD -MP
 
 # Include Directory for libft
 LIBFT_DIR := lib
@@ -46,18 +47,33 @@ SRCS += main.c
 OBJS := $(SRCS:%.c=$(OBJ_DIR)/%.o)
 BONUS_OBJS := $(BONUS_SRCS:%.c=$(OBJ_DIR)/%.o)
 
+# Dependency Files
+DEPS := $(OBJS:.o=.d)
+BONUS_DEPS := $(BONUS_OBJS:.o=.d)
+
 # Colors
 RED := \033[0;31m
 GREEN := \033[0;32m
 YELLOW := \033[1;33m
 NC := \033[0m # No Color
 
-# Compilation Rule
-all: directories libft $(NAME)
+logo:
+	@echo "$(GREEN)"
+	@echo "██████  ██    ██ ███████ ██   ██         ███████ ██     ██  █████  ██████"
+	@echo "██   ██ ██    ██ ██      ██   ██         ██      ██     ██ ██   ██ ██   ██"
+	@echo "██████  ██    ██ ███████ ███████         ███████ ██  █  ██ ███████ ██████"
+	@echo "██      ██    ██      ██ ██   ██              ██ ██ ███ ██ ██   ██ ██"
+	@echo "██       ██████  ███████ ██   ██ ███████ ███████  ███ ███  ██   ██ ██"
+	@echo "$(NC)"
 
-bonus: directories libft $(BONUS_NAME)
+
+# Compilation Rule
+all: logo directories libft $(NAME)
+
+bonus: logo directories libft $(BONUS_NAME)
 
 $(NAME): $(OBJS)
+	$(ASCII_ART)
 	@echo "$(GREEN)Linking...$(NC)"
 	@$(CC) $(CFLAGS) -o $@ $^ $(LIBFT_FLAGS)
 	@echo "$(GREEN)Finished building $(NAME)$(NC)"
@@ -68,11 +84,15 @@ $(BONUS_NAME): $(BONUS_OBJS)
 	@echo "$(GREEN)Finished building $(BONUS_NAME)$(NC)"
 
 # Rule for making object files
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLUDES)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@echo "$(YELLOW)Compiling $<$(NC)"
-	@mkdir -p $(OBJ_DIR) $(addprefix $(OBJ_DIR)/, $(dir $(SRCS)))
-	@$(CC) $(CFLAGS) -I$(LIBFT_INC) -c $< -o $@
+	@mkdir -p $(@D)
+	@$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -I$(LIBFT_INC) -c $< -o $@
 	@echo "$(GREEN)[OK]$(NC)"
+
+# Include the dependency files
+-include $(DEPS)
+-include $(BONUS_DEPS)
 
 # Rule for making the library
 libft:
